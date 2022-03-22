@@ -20,15 +20,15 @@ async def main():
         # }) as response:
         #     print(await response.json())
 
-        async  with session.get(URL +'adv/5',) as response:
-            print(await response.json())
-
-        # async  with session.post(URL +'adv', json={
-        #     'title': 'theme2',
-        #     'text': 'information_text',
-        #     'user_id': '1'
-        # }) as response:
+        # async  with session.get(URL +'adv/5',) as response:
         #     print(await response.json())
+
+        async  with session.post(URL +'adv', json={
+            'title': 'theme2',
+            'text': 'information_text',
+            'user_id': '1'
+        }) as response:
+            print(await response.json())
 
 
 

@@ -1,9 +1,9 @@
-from datetime import datetime
+from sqlalchemy.sql import func
 
 from gino import Gino
 
 db = Gino()
-PG_DATABASE = 'postgresql+asyncpg://postgres:***@127.0.0.1:5432/aiohttp'
+PG_DATABASE = 'postgresql+asyncpg://postgres:****@127.0.0.1:5432/aiohttp'
 
 class UserModel(db.Model):
     __tablename__ = 'user'
@@ -22,6 +22,6 @@ class AdvModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     text = db.Column(db.Text, nullable=False)
-    date = db.Column(db.DateTime, default=datetime.utcnow)
+    date = db.Column(db.DateTime, server_default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'),
                         nullable=False)
